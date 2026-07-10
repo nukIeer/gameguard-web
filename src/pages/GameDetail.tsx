@@ -170,6 +170,18 @@ export default function GameDetail() {
           <MetaTile label={t('detail.android')} value={game.details?.androidVersion || '?'} />
           <MetaTile label={t('detail.ageRating')} value={game.details?.ageRating || '?'} />
         </div>
+
+        {/* Direct download - üst CTA (tek tıkla /api/download/:slug) */}
+        {hasLinks && (
+          <button
+            onClick={() => handleDownload('direct')}
+            className="w-full mt-5 relative overflow-hidden bg-accent-green text-bg-base font-black py-4 rounded-full flex items-center justify-center gap-2 text-lg hover:bg-accent-green-pressed transition-colors shadow-[0_0_20px_rgba(20,200,80,0.3)] group"
+          >
+            <div className="absolute inset-0 -translate-x-[150%] bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out_infinite] skew-x-[-20deg]"></div>
+            <Download className="w-6 h-6 relative z-10" strokeWidth={2.5} />
+            <span className="relative z-10">{t('detail.directDownload')}</span>
+          </button>
+        )}
       </div>
 
       {/* Screenshots */}
